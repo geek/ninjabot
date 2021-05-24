@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	entgo.io/ent v0.8.0
+	github.com/Kucoin/kucoin-go-sdk v1.2.8
 	github.com/adshao/go-binance/v2 v2.2.1
 	github.com/kr/pretty v0.2.1 // indirect
 	github.com/markcheno/go-talib v0.0.0-20190307022042-cd53a9264d70
@@ -13,5 +14,6 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/urfave/cli/v2 v2.3.0
 	github.com/xhit/go-str2duration/v2 v2.0.0
+	golang.org/x/sys v0.0.0-20210521203332-0cec03c779c1 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200605160147-a5ece683394c // indirect
 )

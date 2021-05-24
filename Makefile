@@ -5,4 +5,4 @@ lint:
 test:
 	go test -race -cover ./...
 release:
-	goreleaser build --snapshot
+	goreleaser build --snapshot --rm-dist

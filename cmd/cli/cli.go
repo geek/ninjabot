@@ -59,11 +59,24 @@ func main() {
 						Usage:    "eg. ./btc.csv",
 						Required: true,
 					},
+					&cli.StringFlag{
+						Name:        "exchange",
+						Aliases:     []string{"x"},
+						Usage:       "eg. binance, kucoin",
+						Required:    false,
+						DefaultText: "binance",
+					},
 				},
 				Action: func(c *cli.Context) error {
-					exc, err := exchange.NewBinance(c.Context)
-					if err != nil {
-						return err
+					var exc exchange.Exchange
+					var err error
+
+					if c.String("exchange") == "kucoin" {
+						exc = exchange.NewKucoin()
+					} else {
+						if exc, err = exchange.NewBinance(c.Context); err != nil {
+							return err
+						}
 					}
 
 					var options []data.Option
@@ -81,7 +94,6 @@ func main() {
 
 					return data.NewDownloader(exc).Download(c.Context, c.String("pair"),
 						c.String("timeframe"), c.String("output"), options...)
-
 				},
 			},
 		},
